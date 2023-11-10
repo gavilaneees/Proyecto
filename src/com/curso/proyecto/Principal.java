@@ -35,7 +35,11 @@ public class Principal {
 		
 		sorteoCapturaPokemon(pokemonComunes, pokemonLegendarios);
 		
-		System.out.println("\nSe han capturado " + ((Pokemon) pokemonComunes.get(0)).getCantidadPokemonCapturados() + " Pokemon.");
+		System.out.println("\nSe han capturado " + ((Pokemon) pokemonComunes.get(0)).getCantidadPokemonCapturados() + " Pokemon.\n");
+		
+		FortalezasDebilidades.mostrarFortalezasDebilidades(Tipo.AGUA);
+		FortalezasDebilidades.mostrarFortalezasDebilidades(Tipo.NORMAL);
+		FortalezasDebilidades.mostrarFortalezasDebilidades(Tipo.HIELO);
 	}
 	
 	/**
