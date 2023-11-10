@@ -3,7 +3,10 @@
  */
 package com.curso.proyecto;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+import com.curso.enumerados.Tipo;
 
 /**
  * @author David Gavilanes de Dios
@@ -19,8 +22,9 @@ public abstract class Pokemon {
 	//Variable estática compartida
 	protected static int cantidadPokemonCapturados = 0;
 	
-	//Constante de instancia
+	//Constantes de instancia
 	protected final String nombre;
+	protected final Tipo[] tipo;
 	
 	//Atributos de instancia
 	protected int experiencia;
@@ -30,23 +34,37 @@ public abstract class Pokemon {
 	 * 
 	 * @param nombre: Nombre del Pokémon
 	 * @param nivel: Nivel del Pokémon
+	 * @param tipo: Tipo/s del Pokémon
 	 */
-	public Pokemon(String nombre, int nivel) {
+	public Pokemon(String nombre, int nivel, Tipo... tipo) {
 		this.nombre = nombre;
 		Random rand =  new Random();
 		this.experiencia = rand.nextInt(200) + 10;
 		this.nivel = nivel;
+		this.tipo = tipo;
 	}
 	
 	//Método estático para obtener la cantidad total de Pokémon capturados
 	public static int getCantidadPokemonCapturados() {
 		return cantidadPokemonCapturados;
 	}
+	
+	
+	//Get del tipo del Pokemon
+	public Tipo[] getTipo() {
+		return this.tipo;
+	}
 
 	//Override de toString para mostrar la información del Pokémon
 	@Override
 	public String toString() {
-		return this.nombre + " de nivel " + this.nivel;
+		StringBuilder tiposString = new StringBuilder();
+	    for (Tipo tipo : this.getTipo()) {
+	        tiposString.append(tipo).append(", ");
+	    }
+	    tiposString.delete(tiposString.length() - 2, tiposString.length()); // Elimina la última coma y espacio
+
+	    return this.nombre + " de nivel " + this.nivel + ". Tipo/s: " + tiposString.toString();	
 	}
 	
 	

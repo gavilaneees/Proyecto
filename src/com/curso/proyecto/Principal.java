@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.curso.enumerados.Tipo;
+
 /**
  * @author David Gavilanes de Dios
  * @version 1.0.0
@@ -22,8 +24,8 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 		
-		ArrayList<PokemonComun> pokemonComunes = leerPokemonArchivo("C:\\Users\\Admin\\eclipse-workspace\\01Proyecto\\src\\com\\curso\\proyecto\\comunes.txt", PokemonComun.class);
-		ArrayList<PokemonLegendario> pokemonLegendarios = leerPokemonArchivo("C:\\Users\\Admin\\eclipse-workspace\\01Proyecto\\src\\com\\curso\\proyecto\\legendarios.txt", PokemonLegendario.class);
+		ArrayList<PokemonComun> pokemonComunes = leerPokemonArchivo("C:\\Users\\Admin\\eclipse-workspace\\Proyecto\\src\\com\\curso\\Proyecto\\comunes.txt", PokemonComun.class);
+		ArrayList<PokemonLegendario> pokemonLegendarios = leerPokemonArchivo("C:\\Users\\Admin\\eclipse-workspace\\Proyecto\\src\\com\\curso\\Proyecto\\legendarios.txt", PokemonLegendario.class);
 		
 		System.out.println("Vamos a mostrar todos los Pokémon que hay guardados en el archivo:");
 		
@@ -102,10 +104,18 @@ public class Principal {
 		ArrayList<T> pokemon = new ArrayList<>();
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
-			String nombre;
-			while ((nombre = br.readLine()) != null) {
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				String[] partes = linea.split(",");
+				String nombre = partes[0].trim();
 				int nivel = new Random().nextInt(96) + 5;
-				T pokemons = tipoPokemon.getDeclaredConstructor(String.class, int.class).newInstance(nombre, nivel);
+				
+				Tipo[] tipos = new Tipo[partes.length-1];
+				for (int i = 1; i<partes.length; i++) {
+					tipos[i - 1] = Tipo.valueOf(partes[i].trim());
+				}
+				
+				T pokemons = tipoPokemon.getDeclaredConstructor(String.class, int.class, Tipo[].class).newInstance(nombre, nivel, tipos);
 				pokemon.add(pokemons);
 			}
 		} catch (IOException e) {

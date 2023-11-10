@@ -3,6 +3,7 @@
  */
 package com.curso.proyecto;
 
+import com.curso.enumerados.Tipo;
 import com.curso.interfaces.Capturable;
 
 /**
@@ -22,8 +23,8 @@ public final class PokemonLegendario extends Pokemon implements Capturable {
 	 * 
 	 * @param nombre: Nombre del Pokémon
 	 */
-	public PokemonLegendario(String nombre, int nivel) {
-		super(nombre, nivel);
+	public PokemonLegendario(String nombre, int nivel, Tipo... tipo) {
+		super(nombre, nivel, tipo);
 	}
 	
 	/**

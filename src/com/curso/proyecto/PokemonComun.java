@@ -3,6 +3,7 @@
  */
 package com.curso.proyecto;
 
+import com.curso.enumerados.Tipo;
 import com.curso.interfaces.Capturable;
 
 /**
@@ -20,8 +21,8 @@ public final class PokemonComun extends Pokemon implements Capturable {
 	 * @param nombre: Nombre del Pokémon
 	 * @param nivel: Nivel del Pokémon
 	 */
-	public PokemonComun(String nombre, int nivel) {
-		super(nombre, nivel);
+	public PokemonComun(String nombre, int nivel, Tipo... tipo) {
+		super(nombre, nivel, tipo);
 	}
 	
 	/**
