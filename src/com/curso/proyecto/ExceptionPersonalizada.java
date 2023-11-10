@@ -10,7 +10,11 @@ package com.curso.proyecto;
  *
  */
 public class ExceptionPersonalizada extends Exception {
-	private int codigoError;
+	
+	private final int codigoError;
+	
+	static final int TIPO_NO_ENCONTRADO = 1;
+	private static final int OTRO_ERROR = 2;
 	
 	/**
 	 * 
@@ -25,8 +29,8 @@ public class ExceptionPersonalizada extends Exception {
 	public String getMessage() {
 		String mensaje = "";
 		switch(codigoError) {
-		case 111:
-			mensaje = "ERROR DE ENTRADA/SALIDA CON EL FICHERO.";
+		case 1:
+			mensaje = "TIPO DE POKÉMON NO VÁLIDO.";
 			break;
 		}
 		return mensaje;

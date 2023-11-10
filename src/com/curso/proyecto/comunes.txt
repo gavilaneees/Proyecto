@@ -15,7 +15,7 @@ Blissey,NORMAL
 Happiny,NORMAL
 Pichu,ELÉCTRICO
 Raichu,ELÉCTRICO
-Charizard,FUEGO,VOLADOR
+Charizard,FUEGO,VOLADO
 Blastoise,AGUA
 Venusaur,PLANTA,VENENO
 Audino,NORMAL

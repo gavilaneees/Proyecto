@@ -112,7 +112,12 @@ public class Principal {
 				
 				Tipo[] tipos = new Tipo[partes.length-1];
 				for (int i = 1; i<partes.length; i++) {
-					tipos[i - 1] = Tipo.valueOf(partes[i].trim());
+					String tipoStr = partes[i].trim();
+					try {
+						tipos[i -1] = Tipo.valueOf(tipoStr);
+					} catch (IllegalArgumentException e) {
+						System.err.println( new ExceptionPersonalizada(ExceptionPersonalizada.TIPO_NO_ENCONTRADO).getMessage());
+					}
 				}
 				
 				T pokemons = tipoPokemon.getDeclaredConstructor(String.class, int.class, Tipo[].class).newInstance(nombre, nivel, tipos);
